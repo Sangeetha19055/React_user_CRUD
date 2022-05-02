@@ -12,7 +12,7 @@ export function UserList() {
   const history = useHistory();
   const [user, setUser] = useState([]);
   const getUsers = () => {
-    fetch("https://614ed775b4f6d30017b483a0.mockapi.io/sample", {
+    fetch("API", {
       method: "GET",
     })
       .then((data) => data.json())
@@ -21,7 +21,7 @@ export function UserList() {
   useEffect(getUsers, []);
   //calling the delete method and refreshing the user using getUsers Method..
   const removeUser = (id) => {
-    fetch(`https://614ed775b4f6d30017b483a0.mockapi.io/sample/${id}`, {
+    fetch(`API/${id}`, {
       method: "DELETE",
     }).then(() => getUsers());
   };
@@ -76,7 +76,7 @@ function UpdatedNewCounter({ user, setUser }) {
       like,
     };
 
-    fetch(`https://614ed775b4f6d30017b483a0.mockapi.io/sample/${user.id}`, {
+    fetch(`API/${user.id}`, {
       method: "PUT",
       body: JSON.stringify(incrementLike),
       headers: { "Content-type": "application/json" },
@@ -89,7 +89,7 @@ function UpdatedNewCounter({ user, setUser }) {
       dislike,
     };
     console.log(incrementDislike);
-    fetch(`https://614ed775b4f6d30017b483a0.mockapi.io/sample/${user.id}`, {
+    fetch(`API/${user.id}`, {
       method: "PUT",
       body: JSON.stringify(incrementDislike),
       headers: { "Content-type": "application/json" },
